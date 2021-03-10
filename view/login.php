@@ -30,12 +30,12 @@
                     <tr>
                         <td align="center" colspan="2"><input type='submit' value="Log In"></td>
                     </tr>
-                    <tr>
+               <!-- <tr>
                         <td align="center" colspan="2"><a href="./forgot.php">Forgot Password?</a></td>
                     </tr>
                     <tr>
                         <td align="center" colspan="2"><a href="./signup.php">Sign up</a></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </fieldset>
         </form>

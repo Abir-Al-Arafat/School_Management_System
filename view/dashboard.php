@@ -39,7 +39,7 @@
         <nav>
             <a href="./dashboard.php">Dashboard</a> ||
             <a href="./profile.php"><?php echo $_SESSION['fullname']; ?></a> ||
-            <a href="./addUser.php">Add New User</a> ||
+            <a href="./addUser.php">Add a new user</a> ||
             <a href="./search.php">Search</a> ||
             <a href="../controller/logout.php">Log Out</a>
         </nav>
@@ -64,11 +64,11 @@
             </td>
             <td>
                 <br><br><br><br><br><br>
-                <?php echo "BOOKS"; ?>
+                <?php echo "New Posts"; ?>
             </td>
             <td>
                 <br><br><br><br><br><br>
-                <?php echo "BOOKS"; ?>
+                <?php echo "New Notifications"; ?>
             </td>
         </tr>
     </table>

@@ -44,7 +44,7 @@
                                 Name:
                             </td>
                             <td>
-                                <input type='text' name = 'name' value="<?php echo $_SESSION['fullname']; ?>"/>
+                                <input type='text' name = 'name' value="<?php echo $_SESSION['fullname']; ?>" required/>
                             </td>
                         </tr>
                         <tr>
@@ -52,7 +52,7 @@
                                 Email:
                             </td>
                             <td>
-                                <input type='email' name = 'email' value="<?php echo $_SESSION['email']; ?>"/>
+                                <input type='email' name = 'email' value="<?php echo $_SESSION['email']; ?>" required/>
                             </td>
                         </tr>
                         <tr>
@@ -60,7 +60,7 @@
                                 Phone:
                             </td>
                             <td>
-                                <input type='text' name = 'phone' value="<?php echo $_SESSION['phone']; ?>"/>
+                                <input type='text' name = 'phone' value="<?php echo $_SESSION['phone']; ?>" required/>
                             </td>
                         </tr>
                         <tr>
@@ -68,7 +68,7 @@
                                 Date of birth:
                             </td>
                             <td>
-                                <input type='date' name = 'dob' value="<?php echo $_SESSION['dateOfBirth']; ?>"/>
+                                <input type='date' name = 'dob' value="<?php echo $_SESSION['dateOfBirth']; ?>" required/>
                             </td>
                         </tr>
                         <tr>
