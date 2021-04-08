@@ -1,1 +1,1 @@
-# eBookshelf - a Book Cataloging Social Platform
+# School Management System
