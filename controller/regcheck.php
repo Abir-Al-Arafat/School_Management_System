@@ -1,4 +1,6 @@
 <?php  
+ include "../model/db_connection.php";
+
  $message = '';  
  $error = '';  
  if(isset($_POST["submit"]))  
@@ -13,7 +15,7 @@
       }  
       else if(empty($_POST["phone"]))  
       {  
-           $error = "Phone no cannot be empty";  
+           $error = "Give a valid phone no";  
       }  
       else if(empty($_POST["dateOfBirth"]))  
       {  
@@ -31,10 +33,6 @@
       {
           $error = "confirm password field cannot be empty";
       }
-      else if(empty($_POST["id"]))
-      {
-          $error = "id field cannot be empty";
-      }
       else if(empty($_POST["type"]))
       {
           $error = "type field cannot be empty";
@@ -49,12 +47,16 @@
         $Cpass = $_POST['confirmpassword'];
         if($pass == $Cpass) //checking if passwords match or not
         {
+          //inserting into database
+          $add_qry="insert into admin values(NULL,'$_POST[fullname]','$_POST[email]','$_POST[phone]','$_POST[dateOfBirth]','$_POST[username]','$_POST[password]','$_POST[regdate]','$_POST[type]')";
+          mysqli_query($link,$add_qry);
+          //inserting into json file
           if(file_exists('../model/admin.json'))  
           {  
                 $current_data = file_get_contents('../model/admin.json');  
                 $array_data = json_decode($current_data, true);  
                 $extra = array(  
-                     'id'               =>     $_POST["id"],  
+                    // 'id'               =>     $_POST["id"],  
                      'fullname'          =>     $_POST["fullname"],  
                      'email'     =>     $_POST["email"],  
                      'phone'     =>     $_POST["phone"],  
@@ -76,7 +78,7 @@
                $current_data_1 = file_get_contents('../model/login.json');
                $array_data_1 = json_decode($current_data_1, true); 
                $extra_1 = array(  
-                    'id'               =>     $_POST["id"],   
+              //      'id'               =>     $_POST["id"],   
                     'username'     =>     $_POST["username"],  
                     'password'     =>     $_POST["password"],   
                     'type'     =>     $_POST["type"]  
@@ -86,8 +88,10 @@
                if(file_put_contents('../model/login.json',$final_data_1))
                {
                     $message_1 = "File Appended Successfully in login.json"."<br>";
+                    header('location: ../view/viewAllUsers.php');
                }
           }  
+
           else  
           {  
                 $error = 'JSON File does not exist';  

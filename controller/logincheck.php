@@ -1,4 +1,5 @@
 <?php
+    include "../model/db_connection.php";
     session_start();
     if(empty($_POST['username']) && empty($_POST['password']))
     {
@@ -9,7 +10,20 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $dataString = file_get_contents('../model/login.json');
+        $login_qry = "SELECT * FROM admin WHERE username = '$username' and password = '$password'";
+        $res=mysqli_query($link,$login_qry);
+        $userFoundFlag = false;
+
+        while($row=mysqli_fetch_array($res))
+        {
+            $_SESSION['flag']=true;
+            $_SESSION['id']=$row["id"];
+            $_SESSION['type']=$row["type"];
+            $userFoundFlag = true;
+            header('location: ../view/dashboard.php');
+        }
+
+        /*$dataString = file_get_contents('../model/login.json');
         $dataJSON = json_decode($dataString, true);
         $userFoundFlag = false;
 
@@ -24,7 +38,11 @@
                 $userFoundFlag = true;
                 header('location: ../view/dashboard.php');
             }
-        }
+        }*/
+
+
+
+
         if($userFoundFlag == false)
         {
             echo "Invalid user!";

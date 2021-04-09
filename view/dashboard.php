@@ -1,9 +1,25 @@
 <?php
+    include "../model/db_connection.php";
     session_start();
     if(isset($_SESSION['flag']) == true)
     {
         if(isset($_SESSION['type']) == 'admin')
         {
+        $id=$_SESSION['id'];
+        $login_qry = "SELECT * FROM admin WHERE id='$id'";
+        $res=mysqli_query($link,$login_qry);
+
+        while($row=mysqli_fetch_array($res))
+        {
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['fullname'] = $row['fullname'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['dateOfBirth'] = $row['dateOfBirth'];
+            $_SESSION['phone'] = $row['phone'];
+            $_SESSION['regdate'] = $row['regdate'];
+        }
+
+            /*
             $dataString = file_get_contents('../model/admin.json');
             $dataJSON = json_decode($dataString, true);
             
@@ -20,6 +36,7 @@
                     $_SESSION['regdate'] = $user['regdate'];
                 }
             }
+            */
         }
     }
 ?>
@@ -40,6 +57,7 @@
             <a href="./dashboard.php">Dashboard</a> ||
             <a href="./profile.php"><?php echo $_SESSION['fullname']; ?></a> ||
             <a href="./addUser.php">Add a new user</a> ||
+            <a href="./viewAllUsers.php">View all users</a> ||
             <a href="./search.php">Search</a> ||
             <a href="../controller/logout.php">Log Out</a>
         </nav>

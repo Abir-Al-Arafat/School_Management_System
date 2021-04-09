@@ -1,3 +1,6 @@
+<?php
+include "../model/db_connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +19,10 @@
                     <b>REGISTRATION</b>
                 </legend>
                 <table align="center">
-                    <tr>
+<!--                    <tr>
                         <td align="right">Id:</td>
                         <td><input type='number' name='id'/></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td align="right">Full Name:</td>
                         <td><input type='text' name='fullname'/></td>
@@ -42,11 +45,11 @@
                     </tr>
                     <tr>
                         <td align="right">Password:</td>
-                        <td><input type='text' name='password'/></td>
+                        <td><input type='password' name='password'/></td>
                     </tr>
                     <tr>
                         <td align="right">Confirm Password:</td>
-                        <td><input type='text' name='confirmpassword'/></td>
+                        <td><input type='password' name='confirmpassword'/></td>
                     </tr>
                     <tr>
                         <td align="right">Registration date:</td>
