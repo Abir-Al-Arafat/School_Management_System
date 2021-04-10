@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "../model/db_connection.php";
     $id=$_GET["id"];
     $_SESSION["idAll"]=$id;
@@ -32,6 +33,7 @@
         <nav>
             <a href="./dashboard.php">Dashboard</a> ||
             <a href="./profile.php"><?php echo $_SESSION['fullname']; ?></a> ||
+            <a href="./viewAllUsers.php">View all users</a> ||
             <a href="./addUser.php">Add a new user</a> ||
             <a href="./search.php">Search</a> ||
             <a href="../controller/logout.php">Log Out</a>
@@ -53,7 +55,7 @@
                 </ul>
             </td>
             <td>
-                <form action='../controller/updateAdmin.php' method="POST">
+                <form action='' method="POST">
                     <table align="center" border="1px solid black">
                         <tr>
                             <td width='40%' align="right">
@@ -117,10 +119,10 @@
 
                         <tr>
                             <td colspan="2">
-                               <!-- <center>
+                                <center>
                                     <input type='submit' name="update" value="Update">
-                                </center> -->
-                                <a href="../controller/updateAdmin.php?id=<?php echo "$id"; ?>"><button type="submit" name="submit">Update</button></a> 
+                                </center>
+<!--                                <a href="../controller/updateAdmin.php?id=<?php echo $id; ?>"><button type="submit" name="submit">Update</button></a> -->
                             </td>
                         </tr>
                     </table>
@@ -130,5 +132,27 @@
         </tr>
     </table>
     <?php include('./footer.php'); ?>
+    <?php
+    if(isset($_POST["update"]))
+    {
+        $add_qry="UPDATE admin SET fullname='$_POST[name]',email='$_POST[email]',phone='$_POST[phone]',dateOfBirth='$_POST[dob]',username='$_POST[username]',password='$_POST[password]',regdate='$_POST[regdate]' WHERE id=$id";
+        mysqli_query($link,$add_qry);
+        if($_SESSION['id']==$id)
+        {
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['fullname'] = $_POST['name'];
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['dateOfBirth'] = $_POST['dob'];
+            $_SESSION['phone'] = $_POST['phone'];
+            $_SESSION['regdate'] = $_POST['regdate'];
+        }
+        ?>
+        <script type="text/javascript">
+        window.location="viewAllUsers.php"
+        </script>
+        <?php
+
+    }
+    ?>
 </body>
 </html>

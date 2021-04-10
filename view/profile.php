@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    $image=$_SESSION['image1'];
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
                             <?php echo $_SESSION['type']; ?>
                         </td>
                         <td rowspan="6">
-                            <img src= '<?php echo "../images/profile/".$_SESSION['id'].".jpeg"; ?>' height="250">
+                            <img src="../images/profile/<?php echo $image;?>" height="250" width="250" alt="image not available">
                         </td>
                     </tr>
                     <tr>

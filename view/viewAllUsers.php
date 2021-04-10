@@ -18,6 +18,7 @@
     <th>Username</th>
     <th>Password</th>
     <th>Registration date</th>
+    <th>Image</th>
     <th>User Type</th>
     <th>Edit</th>
     <th>Delete</th>
@@ -35,8 +36,8 @@
       echo "<td>"; echo $row["dateOfBirth"]; echo "</td>";
       echo "<td>"; echo $row["username"]; echo "</td>";
       echo "<td>"; echo $row["password"]; echo "</td>";
-      echo "<td>"; echo $row["regdate"]; echo "</td>";
-      echo "<td>"; echo $row["type"]; echo "</td>";
+      echo "<td>"; echo $row["regdate"]; echo "</td>"; 
+      echo "<td>"; ?> <img src="<?php echo $row["image1"]; ?>" height="100" width="100"> <?php echo "</td>"; echo "<td>"; echo $row["type"]; echo "</td>";
       echo "<td>"; ?> <a href="editAdmin.php?id=<?php echo $row["id"]; ?>"><button type="button" class="btn btn-success">Edit</button></a> <?php echo "</td>";
       echo "<td>"; ?> <a href="../controller/deleteAdmin.php?id=<?php echo $row["id"]; ?>"><button type="button" class="btn btn-danger">Delete</button></a> <?php echo "</td>";
       echo "</tr>";

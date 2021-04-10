@@ -13,7 +13,7 @@ include "../model/db_connection.php";
 <body background="../images/assets/background.jpg">
     <?php include('./header.php'); ?>
     <div width='100px'>
-        <form action='../controller/regcheck.php' method="POST">
+        <form action='../controller/regcheck.php' method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>
                     <b>REGISTRATION</b>
@@ -54,6 +54,10 @@ include "../model/db_connection.php";
                     <tr>
                         <td align="right">Registration date:</td>
                         <td><input type='date' name='regdate' required/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Image:</td>
+                        <td><input type='file' name='f1'/></td>
                     </tr>
                     <tr>
                         <td align="right">Type:</td>

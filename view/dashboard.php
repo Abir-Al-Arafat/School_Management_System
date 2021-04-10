@@ -17,6 +17,7 @@
             $_SESSION['dateOfBirth'] = $row['dateOfBirth'];
             $_SESSION['phone'] = $row['phone'];
             $_SESSION['regdate'] = $row['regdate'];
+            $_SESSION['image1'] = $row['image1'];
         }
 
             /*

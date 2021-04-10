@@ -19,6 +19,7 @@
             $_SESSION['flag']=true;
             $_SESSION['id']=$row["id"];
             $_SESSION['type']=$row["type"];
+            $_SESSION['password'] = $row['password'];
             $userFoundFlag = true;
             header('location: ../view/dashboard.php');
         }
