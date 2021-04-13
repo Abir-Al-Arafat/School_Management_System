@@ -1,6 +1,14 @@
 <?php
     include "../model/db_connection.php";
     session_start();
+    if($_SESSION['flag']==true)
+    {
+        //continue
+    }
+    else
+    {
+        header('location: ../view/login.php');
+    }
     if(isset($_SESSION['flag']) == true)
     {
         if(isset($_SESSION['type']) == 'admin')

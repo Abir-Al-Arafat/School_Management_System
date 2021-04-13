@@ -16,6 +16,7 @@
         $username=$row["username"];
         $password=$row["password"];
         $regdate=$row["regdate"];
+        $image1=$row["image1"];
     }
 ?>
 <!DOCTYPE html>
@@ -55,7 +56,7 @@
                 </ul>
             </td>
             <td>
-                <form action='' method="POST">
+                <form action='' method="POST" enctype="multipart/form-data">
                     <table align="center" border="1px solid black">
                         <tr>
                             <td width='40%' align="right">
@@ -118,6 +119,16 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                Image:
+                            </td>  
+                            <td>
+                                <img src="<?php echo $image1; ?>" alt="image not available" height="100" width="100"><br>
+                                <input type='file' name='f1'/>
+                            </td>                      
+                        </tr>
+
+                        <tr>
                             <td colspan="2">
                                 <center>
                                     <input type='submit' name="update" value="Update">
@@ -135,6 +146,15 @@
     <?php
     if(isset($_POST["update"]))
     {
+        $tm=md5(time());
+        $fnm=$_FILES["f1"]["name"];
+        $dst="../images/profile/".$tm.$fnm; 
+        //$dst1="images/profile/".$tm.$fnm; 
+        move_uploaded_file($_FILES["f1"]["tmp_name"],$dst);
+
+        if($fnm=="")
+        {
+        //continue
         $add_qry="UPDATE admin SET fullname='$_POST[name]',email='$_POST[email]',phone='$_POST[phone]',dateOfBirth='$_POST[dob]',username='$_POST[username]',password='$_POST[password]',regdate='$_POST[regdate]' WHERE id=$id";
         mysqli_query($link,$add_qry);
         if($_SESSION['id']==$id)
@@ -145,7 +165,25 @@
             $_SESSION['dateOfBirth'] = $_POST['dob'];
             $_SESSION['phone'] = $_POST['phone'];
             $_SESSION['regdate'] = $_POST['regdate'];
+            $_SESSION['image1'] = $row['image1'];
         }
+        }
+        else
+        {
+        $add_qry="UPDATE admin SET fullname='$_POST[name]',email='$_POST[email]',phone='$_POST[phone]',dateOfBirth='$_POST[dob]',username='$_POST[username]',password='$_POST[password]',regdate='$_POST[regdate]',image1='$dst' WHERE id=$id";
+        mysqli_query($link,$add_qry);
+        if($_SESSION['id']==$id)
+        {
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['fullname'] = $_POST['name'];
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['dateOfBirth'] = $_POST['dob'];
+            $_SESSION['phone'] = $_POST['phone'];
+            $_SESSION['regdate'] = $_POST['regdate'];
+            $_SESSION['image1'] = $row['image1'];
+        }
+        }
+
         ?>
         <script type="text/javascript">
         window.location="viewAllUsers.php"

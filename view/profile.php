@@ -1,6 +1,14 @@
 <?php 
     session_start();
     $image=$_SESSION['image1'];
+    if($_SESSION['flag']==true)
+    {
+        //continue
+    }
+    else
+    {
+        header('location: ../view/login.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +56,7 @@
                             <?php echo $_SESSION['type']; ?>
                         </td>
                         <td rowspan="6">
-                            <img src="../images/profile/<?php echo $image;?>" height="250" width="250" alt="image not available">
+                            <img src="<?php echo $image;?>" height="250" width="250" alt="image not available">
                         </td>
                     </tr>
                     <tr>

@@ -52,11 +52,11 @@
          $tm=md5(time());
          $fnm=$_FILES["f1"]["name"];
          $dst="../images/profile/".$tm.$fnm; 
-         $dst1="images/profile/".$tm.$fnm; 
+         //$dst1="images/profile/".$tm.$fnm; 
          move_uploaded_file($_FILES["f1"]["tmp_name"],$dst);
 
           //inserting into database
-          $add_qry="insert into admin values(NULL,'$_POST[fullname]','$_POST[email]','$_POST[phone]','$_POST[dateOfBirth]','$_POST[username]','$_POST[password]','$_POST[regdate]','$_POST[type]','$dst1')";
+          $add_qry="insert into admin values(NULL,'$_POST[fullname]','$_POST[email]','$_POST[phone]','$_POST[dateOfBirth]','$_POST[username]','$_POST[password]','$_POST[regdate]','$_POST[type]','$dst')";
           mysqli_query($link,$add_qry);
 
           //inserting into json file

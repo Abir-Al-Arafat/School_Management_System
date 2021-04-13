@@ -1,5 +1,13 @@
 <?php
     session_start();
+    if($_SESSION['flag']==true)
+    {
+        //continue
+    }
+    else
+    {
+        header('location: ../view/login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
