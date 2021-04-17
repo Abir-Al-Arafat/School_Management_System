@@ -56,14 +56,15 @@
                 </ul>
             </td>
             <td>
-                <form action='' method="POST" enctype="multipart/form-data">
+                <form action='' method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <table align="center" border="1px solid black">
                         <tr>
                             <td width='40%' align="right">
                                 Fullname:
                             </td>
                             <td>
-                                <input type='text' name = 'name' value="<?php echo $fullname; ?>" required/>
+                                <input type='text' name='name' id="name" value="<?php echo $fullname; ?>" onkeyup="checkName()" onblur="checkName()" required/>
+                                <span align="right" id="nameErr"></span>
                             </td>
                         </tr>
                         <tr>
@@ -71,7 +72,8 @@
                                 Email:
                             </td>
                             <td>
-                                <input type='email' name = 'email' value="<?php echo $email; ?>" required/>
+                                <input type='email' name='email' id='email' value="<?php echo $email; ?>" onkeyup="checkEmail()" onblur="checkEmail()" required/>
+                                <span align="right" id="emailErr"></span>
                             </td>
                         </tr>
                         <tr>
@@ -79,7 +81,8 @@
                                 Phone:
                             </td>
                             <td>
-                                <input type='text' name = 'phone' value="<?php echo $phone; ?>" required/>
+                                <input type='text' name='phone' id='phone' value="<?php echo $phone; ?>" onkeyup="checkPhone()" onblur="checkPhone()" required/>
+                                <span align="right" id="phoneErr"></span>
                             </td>
                         </tr>
                         <tr>
@@ -87,7 +90,7 @@
                                 Date of birth:
                             </td>
                             <td>
-                                <input type='date' name = 'dob' value="<?php echo $dob; ?>" required/>
+                                <input type='date' name='dob' id='dob' value="<?php echo $dob; ?>" required/>
                             </td>
                         </tr>
 
@@ -96,7 +99,8 @@
                                 Username:
                             </td>
                             <td>
-                                <input type='text' name = 'username' value="<?php echo $username; ?>" required/>
+                                <input type='text' name='username' id='username' value="<?php echo $username; ?>" onkeyup="checkUN()" onblur="checkUN()" required/>
+                                <span align="right" id="unErr"></span>
                             </td>
                         </tr>
 
@@ -105,7 +109,8 @@
                                 Password:
                             </td>
                             <td>
-                                <input type='text' name = 'password' value="<?php echo $password; ?>" required/>
+                                <input type='text' name='password' id='password' value="<?php echo $password; ?>" onkeyup="checkPassEA()" onblur="checkPassEA()" required/>
+                                <span align="right" id="passErr"></span>
                             </td>
                         </tr>
 
@@ -114,7 +119,7 @@
                                 Registration Date:
                             </td>
                             <td>
-                                <input type='date' name = 'regdate' value="<?php echo $regdate; ?>" required/>
+                                <input type='date' name='regdate' id='regdate' value="<?php echo $regdate; ?>" required/>
                             </td>
                         </tr>
 
@@ -192,5 +197,6 @@
 
     }
     ?>
+    <?php include('../resources/edit.js'); ?>
 </body>
 </html>

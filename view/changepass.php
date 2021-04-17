@@ -10,7 +10,7 @@
 <body background="../images/assets/background.jpg">
     <?php include('./header.php'); ?>
     <div width='100px'>
-        <form action='../controller/changepasschk.php' method="POST">
+        <form action='../controller/changepasschk.php' method="POST" onsubmit="return validateForm()">
             <fieldset>
                 <legend>
                     <b>Change Password</b>
@@ -18,15 +18,18 @@
                 <table align="center">
                     <tr>
                         <td align="right">Old Password:</td>
-                        <td><input type='password' name='op'/></td>
+                        <td><input type='password' name='op' id="op" onkeyup="checkPass()" onblur="checkPass()"/></td>
+                        <td align="right"><span align="right" id="opErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">New Password:</td>
-                        <td><input type='password' name='np'/></td>
+                        <td><input type='password' name='np' id="np" onkeyup="checkPassNP()" onblur="checkPassNP()"/></td>
+                        <td align="right"><span align="right" id="npErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Confirm New Password:</td>
-                        <td><input type='password' name='cnp'/></td>
+                        <td><input type='password' name='cnp' id="cnp" onkeyup="checkPassCNP()" onblur="checkPassCNP()"/></td>
+                        <td align="right"><span align="right" id="cnpErr"></span></td>
                     </tr>
                     
                     <tr>
@@ -40,5 +43,6 @@
         </form>
     </div>
     <?php include('./footer.php'); ?>
+    <?php include('../resources/edit.js'); ?>
 </body>
 </html>

@@ -45,14 +45,15 @@
                 </ul>
             </td>
             <td>
-                <form action='../controller/update.php' method="POST">
+                <form action='../controller/update.php' method="POST" onsubmit="return validateForm()">
                     <table align="center" border="1px solid black">
                         <tr>
                             <td width='40%' align="right">
                                 Name:
                             </td>
                             <td>
-                                <input type='text' name = 'name' value="<?php echo $_SESSION['fullname']; ?>" required/>
+                                <input type='text' name='name' id='name' value="<?php echo $_SESSION['fullname']; ?>" onkeyup="checkName()" onblur="checkName()" required/>
+                                <td align="right"><span align="right" id="nameErr"></span></td>
                             </td>
                         </tr>
                         <tr>
@@ -60,7 +61,8 @@
                                 Email:
                             </td>
                             <td>
-                                <input type='email' name = 'email' value="<?php echo $_SESSION['email']; ?>" required/>
+                                <input type='email' name='email' id='email' value="<?php echo $_SESSION['email']; ?>" onkeyup="checkEmail()" onblur="checkName()" required/>
+                                <td align="right"><span align="right" id="emailErr"></span></td>
                             </td>
                         </tr>
                         <tr>
@@ -68,7 +70,8 @@
                                 Phone:
                             </td>
                             <td>
-                                <input type='text' name = 'phone' value="<?php echo $_SESSION['phone']; ?>" required/>
+                                <input type='text' name='phone' id='phone' value="<?php echo $_SESSION['phone']; ?>" onkeyup="checkPhone()" onblur="checkPhone()" required/>
+                                <td align="right"><span align="right" id="phoneErr"></span></td>
                             </td>
                         </tr>
                         <tr>
@@ -76,7 +79,8 @@
                                 Date of birth:
                             </td>
                             <td>
-                                <input type='date' name = 'dob' value="<?php echo $_SESSION['dateOfBirth']; ?>" required/>
+                                <input type='date' name='dob' id='dob' value="<?php echo $_SESSION['dateOfBirth']; ?>" onkeyup="dob()" onblur="dob()" required/>
+                                <td align="right"><span align="right" id="dobErr"></span></td>
                             </td>
                         </tr>
                         <tr>
@@ -93,5 +97,6 @@
         </tr>
     </table>
     <?php include('./footer.php'); ?>
+    <?php include('../resources/edit.js'); ?>
 </body>
 </html>

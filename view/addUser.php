@@ -22,7 +22,7 @@ if($_SESSION['flag']==true)
 <body background="../images/assets/background.jpg">
     <?php include('./header.php'); ?>
     <div width='100px'>
-        <form action='../controller/regcheck.php' method="POST" enctype="multipart/form-data">
+        <form action='../controller/regcheck.php' method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
             <fieldset>
                 <legend>
                     <b>REGISTRATION</b>
@@ -34,39 +34,47 @@ if($_SESSION['flag']==true)
                     </tr> -->
                     <tr>
                         <td align="right">Full Name:</td>
-                        <td><input type='text' name='fullname'/></td>
+                        <td><input type='text' name='fullname' id='fullname' onkeyup="checkName()" onblur="checkName()"/></td>
+                        <td><span id="nameErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Email:</td>
-                        <td><input type='email' name='email'/></td>
+                        <td><input type='email' name='email' id='email' onkeyup="checkEmail()" onblur="checkEmail()"/></td>
+                        <td><span id="emailErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Phone:</td>
-                        <td><input type='text' name='phone' value="+88"/></td>
+                        <td><input type='text' name='phone' id='phone' value="+88" onkeyup="checkPhone()" onblur="checkPhone()"/></td>
+                        <td><span id="phoneErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Date of Birth:</td>
-                        <td><input type='date' name='dateOfBirth'/></td>
+                        <td><input type='date' name='dateOfBirth' id='dateOfBirth' onkeyup="dob()" onblur="dob()"/></td>
+                        <td><span id="dobErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Username:</td>
-                        <td><input type='text' name='username'/></td>
+                        <td><input type='text' name='username' id='username' onkeyup="checkUN()" onblur="checkUN()"/></td>
+                        <td><span id="unErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Password:</td>
-                        <td><input type='password' name='password'/></td>
+                        <td><input type='password' name='password' id='password' onkeyup="checkPass()" onblur="checkPass()"/></td>
+                        <td><span id="passErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Confirm Password:</td>
-                        <td><input type='password' name='confirmpassword'/></td>
+                        <td><input type='password' name='confirmpassword' id='confirmpassword' onkeyup="checkPassC()" onblur="checkPassC()"/></td>
+                        <td><span id="passErrC"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Registration date:</td>
-                        <td><input type='date' name='regdate' required/></td>
+                        <td><input type='date' name='regdate' id='regdate' onkeyup="reg()" onblur="reg()" required/></td>
+                        <td><span id="regdateErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Image:</td>
-                        <td><input type='file' name='f1'/></td>
+                        <td><input type='file' name='f1' id='f1'/></td>
                     </tr>
                     <tr>
                         <td align="right">Type:</td>
@@ -85,5 +93,6 @@ if($_SESSION['flag']==true)
             </fieldset>
         </form>
     </div>
+    <?php include('../resources/registration.js'); ?>
 </body>
 </html>

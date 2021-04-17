@@ -10,7 +10,7 @@
 <body background="../images/assets/background.jpg">
     <?php include('./header.php'); ?>
     <div width='100px'>
-        <form action='../controller/logincheck.php' method="POST">
+        <form action='../controller/logincheck.php' method="POST" onsubmit="return validateForm()">
             <fieldset>
                 <legend>
                     <b>LOG IN</b>
@@ -18,11 +18,13 @@
                 <table align="center">
                     <tr>
                         <td align="right">Username:</td>
-                        <td><input type='text' name='username'/></td>
+                        <td><input type='text' name='username' id='username' onkeyup="checkName()" onblur="checkName()"/></td>
+                        <td align="right"><span align="right" id="nameErr"></span></td>
                     </tr>
                     <tr>
                         <td align="right">Password:</td>
-                        <td><input type='password' name='password'/></td>
+                        <td><input type='password' name='password' id='password' onkeyup="checkPass()" onblur="checkPass()"/></td>
+                        <td align="right"><span align="right" id="passErr"></span></td>
                     </tr>
                     <tr>
                         <td colspan="2"><hr></td>
@@ -40,5 +42,6 @@
             </fieldset>
         </form>
     </div>
+    <?php include('../resources/login.js'); ?>
 </body>
 </html>
