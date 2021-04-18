@@ -1,4 +1,5 @@
 <script>
+	
 
         function validateForm(){  
 		var name=document.loginform.username.value;  
@@ -18,7 +19,7 @@
 
         function checkName() {
 			if (document.getElementById("username").value == "") {
-			  	document.getElementById("nameErr").innerHTML = "Name can't be blank";
+			  	document.getElementById("nameErr").innerHTML = "Username is required";
 			  	document.getElementById("nameErr").style.color = "red";
 			  	document.getElementById("username").style.borderColor = "red";
 			}else{
@@ -29,7 +30,7 @@
 
         function checkPass(){
         	if (document.getElementById("password").value == "") {
-			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("passErr").innerHTML = "Password is required";
 			  	document.getElementById("passErr").style.color = "red";
 			  	document.getElementById("password").style.borderColor = "red";
 			}else if(document.getElementById("password").value.length<4){

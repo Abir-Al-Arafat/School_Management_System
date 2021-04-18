@@ -12,7 +12,7 @@
 
         $login_qry = "SELECT * FROM admin WHERE username = '$username' and password = '$password'";
         $res=mysqli_query($link,$login_qry);
-        $userFoundFlag = false;
+        $userFoundFlag=false;
 
         while($row=mysqli_fetch_array($res))
         {
@@ -46,7 +46,9 @@
 
         if($userFoundFlag == false)
         {
-            echo "Invalid user!";
+            $_SESSION['userFoundFlag']=$userFoundFlag;
+            $_SESSION["invalid"]="Invalid username or password!!";
+            header('location: ../view/login.php');
         }
     }
 ?>
