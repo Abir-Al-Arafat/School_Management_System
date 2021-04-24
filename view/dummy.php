@@ -62,42 +62,31 @@
 <body background="../images/assets/background.jpg">
     <?php include('./header.php'); ?>
 
-    <nav>
-    <div class="navbar">
-        <a href="./dashboard.php">Dashboard</a>
-        <a href="./profile.php">Profile</a>
-        <a href="./viewAllUsers.php">View All Users</a>
-        <a href="./search.php">Search</a>
-<!--        <a href="../controller/logout.php">Logout</a> -->
-    <div class="dropdown">
+    
+    
+        <nav>
+        <div class="navbar">
+  <a href="./dashboard.php">Dashboard</a>
+  <a href="./profile.php">Profile</a>
+  <a href="./viewAllUsers.php">View All Users</a>
+  <a href="./search.php">Search</a>
+  <a href="../controller/logout.php">Logout</a>
+  <div class="dropdown">
     <button class="dropbtn">Add a user
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <a href="./addUser.php">Add an admin</a>
-      <a href="./addStudent.php">Add a student</a>
-      <a href="./addTeacher.php">Add a teacher</a>
-      <a href="./addEmp.php">Add an employee</a>
+      <a href="#">Add a student</a>
+      <a href="#">Add a teacher</a>
+      <a href="#">Add an employee</a>
     </div>
-    </div> 
-    <a href="../controller/logout.php">Logout</a>
-    </div>
-    </nav>
-
-<!--    <fieldset>
-    <br>
-        <nav>
-            <a href="./dashboard.php">Dashboard</a> ||
-            <a href="./profile.php"><?php echo $_SESSION['fullname']; ?></a> ||
-            <a href="./addUser.php">Add a new user</a> ||
-            <a href="./viewAllUsers.php">View all users</a> ||
-            <a href="./search.php">Search</a> ||
-            <a href="../controller/logout.php">Log Out</a>
-            <a href="./dummy.php">Dummy</a>
+  </div> 
+</div>
         </nav>
-    <br>
-    </fieldset>
--->    
+    
+    
+    
     <table border="1px solid black" width='100%'>
         <tr>
             <th>
